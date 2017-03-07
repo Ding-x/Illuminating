@@ -18,7 +18,7 @@ This Program is to simulating a classical game.
 
 int x, y; //To record the point of Light.
 int rows, columns, steps; //To record the rows, columns of dungeon and how many steps
-                              should move.
+                          // should move.
 //-------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------
@@ -27,7 +27,8 @@ int rows, columns, steps; //To record the rows, columns of dungeon and how many 
 void printArr(char arr[rows][columns]); // To print out the dungeon.
 void moveArr(char arr[rows][columns],char c);//To make a move of the light;
 int ifObstruction(int x1,int y1,int x2,int y2);//To check if there is a wall between
-      the point and the light;
+                                               //the point and the light;
+int ifWalls(int x1, int y1, int arr[rows][columns] );//To record that point cannot be lighted.
 //-------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------
@@ -74,6 +75,20 @@ int ifObstruction(int x1,int y1,int x2,int y2){
        return 0;
 }
 
+int ifWalls(int x1, int y1, int arr[rows][columns] ){
+    int result = -100;
+    for (int i=0; i<rows; i++){
+        for (int j=0; j<columns; j++) {
+            if (arr[i][j]==-1&&ifObstruction(x1, y1, i, j)==-1){
+                result = 0;
+                break;
+            }
+            else
+                result = -1;
+        }
+    }
+    return result;
+}
 
 
 
