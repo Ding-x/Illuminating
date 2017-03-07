@@ -10,18 +10,35 @@ This Program is to simulating a classical game.
 
 //-------------------------------------------------------------------------------------
 // CONSTANTS and TYPES
+#define INPUT_LENGTH 1024  //The max character read in one line of a txt.
 //-------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------
 // VARIABLES
+
+int x, y; //To record the point of Light.
+int rows, columns, steps; //To record the rows, columns of dungeon and how many steps
+                              should move.
 //-------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------
 // PROTOTYPES
+
+void printArr(char arr[rows][columns]); // To print out the dungeon.
+
 //-------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------
 // FUNCTIONS
+
+void printArr(char arr[rows][columns]){
+    for (int i=0; i<rows; i++){
+        for (int j=0; j<columns; j++)
+            printf("%c",arr[i][j]);
+        printf("\n");
+    }
+}
+
 //-------------------------------------------------------------------------------------
 
 int main( int argc, char *argv[] )
