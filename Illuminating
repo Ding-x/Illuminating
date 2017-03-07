@@ -30,6 +30,7 @@ int ifObstruction(int x1,int y1,int x2,int y2);//To check if there is a wall bet
                                                //the point and the light;
 int ifWalls(int x1, int y1, int arr[rows][columns] );//To record that point cannot be lighted.
 int lighted(char arr[rows][columns], int x, int y);//To record whether a point has beed lighted.
+int lightedDegree(int r, int c);//To set which degree should be lighted.
 //-------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------
@@ -106,6 +107,17 @@ int lighted(char arr[rows][columns], int x, int y){
         return 0;
 }
 
+int lightedDegree(int r, int c){
+    double distance = sqrt((r-x)*(r-x)+(c-y)*(c-y));
+    if(distance>=1&&distance<=sqrt(2))
+        return 1;
+    else if (distance>=2&&distance<=sqrt(5))
+        return 2;
+    else if (distance>=3&&distance<=sqrt(13))
+        return 3;
+    else
+        return 0;
+}
 
 //-------------------------------------------------------------------------------------
 
