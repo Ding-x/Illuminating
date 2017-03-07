@@ -227,8 +227,14 @@ int main( int argc, char *argv[] )
       fgets ( inputChars , INPUT_LENGTH , f );
       printf("Move 0:");
       printArr(dungeon);
-  
 
+      for (int i=0; i<steps; i++) {
+           int count=i+1;
+           moveArr(dungeon, inputChars[i]);
+           reDrwaw(dungeon, wallArr);
+           printf("Move %d :\n", count);
+           printArr(dungeon);
+          }
     }
     end=0;
   }
