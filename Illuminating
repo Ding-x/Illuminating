@@ -26,6 +26,8 @@ int rows, columns, steps; //To record the rows, columns of dungeon and how many 
 
 void printArr(char arr[rows][columns]); // To print out the dungeon.
 void moveArr(char arr[rows][columns],char c);//To make a move of the light;
+int ifObstruction(int x1,int y1,int x2,int y2);//To check if there is a wall between
+      the point and the light;
 //-------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------
@@ -58,6 +60,20 @@ void moveArr(char arr[rows][columns],char c){
     }
     arr[x][y]='%';
 }
+
+int ifObstruction(int x1,int y1,int x2,int y2){
+    double xd1=x1;
+    double yd1=y1;
+    double xd2=x2;
+    double yd2=y2;
+    double xd=x;
+    double yd=y;
+    if((xd1-yd1)/(xd2-yd2)==(xd1-xd)/(yd1-yd))
+       return -1;
+    else
+       return 0;
+}
+
 
 
 
