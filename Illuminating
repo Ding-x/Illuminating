@@ -25,7 +25,7 @@ int rows, columns, steps; //To record the rows, columns of dungeon and how many 
 // PROTOTYPES
 
 void printArr(char arr[rows][columns]); // To print out the dungeon.
-
+void moveArr(char arr[rows][columns],char c);//To make a move of the light;
 //-------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------
@@ -38,6 +38,29 @@ void printArr(char arr[rows][columns]){
         printf("\n");
     }
 }
+
+void moveArr(char arr[rows][columns],char c){
+    switch (c) {
+        case '^':
+            x--;
+            break;
+        case 'v':
+            x++;
+            break;
+        case '<':
+            y--;
+            break;
+        case '>':
+            y++;
+            break;
+        default:
+            break;
+    }
+    arr[x][y]='%';
+}
+
+
+
 
 //-------------------------------------------------------------------------------------
 
@@ -119,7 +142,10 @@ int main( int argc, char *argv[] )
       fgets ( inputChars , INPUT_LENGTH , f );
       printf("Move 0:");
       printArr(dungeon);
+  
 
-
+    }
+    end=0;
+  }
   return EXIT_SUCCESS;
 } 
