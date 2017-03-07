@@ -31,6 +31,8 @@ int ifObstruction(int x1,int y1,int x2,int y2);//To check if there is a wall bet
 int ifWalls(int x1, int y1, int arr[rows][columns] );//To record that point cannot be lighted.
 int lighted(char arr[rows][columns], int x, int y);//To record whether a point has beed lighted.
 int lightedDegree(int r, int c);//To set which degree should be lighted.
+void reDrwaw(char arr[rows][columns],int wallArr[rows][columns]);//To redraw the dungeon according
+                                 //to all the changes.
 //-------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------
@@ -118,6 +120,32 @@ int lightedDegree(int r, int c){
     else
         return 0;
 }
+
+void reDrwaw(char arr[rows][columns],int wallArr[rows][columns]){
+    
+    for (int i=1; i<rows-1; i++) {
+        for(int j=1; j<columns-1;j++){
+            if (lighted(arr, i, j)==-1) {
+                arr[i][j]=',';
+            }
+        }
+    }
+    
+    
+    for (int i=1; i<rows-1; i++) {
+        for(int j=1; j<columns-1;j++){
+            if (ifWalls(i, j, wallArr)==0) {
+                if (lightedDegree(i, j)==1)
+                    arr[i][j]='-';
+                if (lightedDegree(i, j)==2)
+                    arr[i][j]='=';
+                if (lightedDegree(i, j)==3)
+                    arr[i][j]='#';
+            }
+        }
+    }
+}
+
 
 //-------------------------------------------------------------------------------------
 
