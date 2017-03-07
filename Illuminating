@@ -43,5 +43,68 @@ void printArr(char arr[rows][columns]){
 
 int main( int argc, char *argv[] )
 {
+  char inputChars [ INPUT_LENGTH ];
+  int end=-1; // A parameter to record whether reading file should be stop.
+  
+  while ( fgets ( inputChars , INPUT_LENGTH , stdin )!= NULL){
+    
+    end=-1;
+    while(end!=0){
+       printf ( "%s" , inputChars );
+
+       int r, c, m; 
+       fscanf(stdin, "%d", &r);
+       fscanf(stdin, "%d", &c);
+       fscanf(stdin, "%d", &m);
+
+       //We get the rows, colums, steps we want.    
+       rows=r+2;
+       columns=c+2;
+       steps=m;
+            
+       char dungeon[rows][columns]; //To establish the basic arr of dungeon.
+       int wallArr[rows][columns]; //To record which point is a wall.
+       
+       //Now we begin to initialize the dungeon accoding to the txt we get.
+       for (int i=0; i<rows; i++) {
+         for (int j=0; j<columns; j++) {
+           dungeon[i][j]=' ';
+           }
+        }
+            
+        dungeon[0][0]='+';
+        dungeon[0][columns-1]='+';
+        dungeon[rows-1][0]='+';
+        dungeon[rows-1][columns-1]='+';
+            
+        for (int i=1; i<rows-1; i++) {
+          dungeon[i][0]='|';
+          dungeon[i][columns-1]='|';
+          }
+            
+        for (int j=1; j<columns-1; j++) {
+          dungeon[0][j]='-';
+          dungeon[rows-1][j]='-';
+          }
+           
+        fgets ( inputChars , INPUT_LENGTH , f );
+        for (int i=1; i<rows-1; i++) {
+          fgets ( inputChars , INPUT_LENGTH , stdin );
+          for (int j=1, k=0; j<columns-1; j++,k++) {
+            if (inputChars[k]=='@') {
+              dungeon[i][j]='%';
+              x=i;
+               y=j;
+               }
+               else if(inputChars[k]=='.')
+                 dungeon[i][j]=',';
+               else if(inputChars[k]=='~')
+                 dungeon[i][j]='!';
+               else
+                 dungeon[i][j]=inputChars[k];
+                 }
+              }
+              //Till this step, we have finished the initializing.
+
   return EXIT_SUCCESS;
 } 
