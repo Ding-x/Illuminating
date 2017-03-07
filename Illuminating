@@ -106,5 +106,20 @@ int main( int argc, char *argv[] )
               }
               //Till this step, we have finished the initializing.
 
+       //A loop to find which point is a wall.
+       for (int i=0; i<rows; i++) {
+           for(int j=0; j<columns;j++){
+                if(dungeon[i][j]=='!')
+                    wallArr[i][j]=-1;
+                else
+                    wallArr[i][j]=0;
+                }
+            }
+
+      fgets ( inputChars , INPUT_LENGTH , f );
+      printf("Move 0:");
+      printArr(dungeon);
+
+
   return EXIT_SUCCESS;
 } 
